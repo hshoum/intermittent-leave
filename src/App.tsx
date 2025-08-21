@@ -255,11 +255,11 @@ export default function LeaveDaySelector() {
     // Check quotas
     const quotas = calculateQuotas(leaveTypeId, date);
 
-    if (leaveType.rules.quotas.weekly && quotas.remaining.weekly <= 0) {
+    if (leaveType.rules.quotas?.weekly && quotas.remaining?.weekly !== undefined && quotas.remaining.weekly <= 0) {
       return { eligible: false, reason: 'Weekly quota exceeded' };
     }
 
-    if (leaveType.rules.quotas.total && quotas.remaining.total <= 0) {
+    if (leaveType.rules.quotas?.total && quotas.remaining?.total !== undefined && quotas.remaining.total <= 0) {
       return { eligible: false, reason: 'Total quota exceeded' };
     }
 
